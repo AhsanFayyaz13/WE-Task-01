@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahsan Fayyaz - Personal Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: #e0e0e0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(120, 80, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ---- Picture Placeholder ---- */
+        .picture-container {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #6366f1, #818cf8);
+            padding: 4px;
+            animation: pulse-ring 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .picture-container .inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(30, 27, 60, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #a78bfa;
+            overflow: hidden;
+        }
+
+        .picture-container .inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes pulse-ring {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 0 12px rgba(124, 58, 237, 0);
+            }
+        }
+
+        .placeholder-text {
+            font-size: 11px;
+            color: #8b8ba3;
+            margin-bottom: 24px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ---- Name ---- */
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: #818cf8;
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---- Info Rows ---- */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .info-row:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: translateX(4px);
+        }
+
+        .info-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(99, 102, 241, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            text-align: left;
+        }
+
+        .info-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #7c7c9a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: #d4d4e8;
+        }
+
+        /* ---- CGPA Bar ---- */
+        .cgpa-section {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .cgpa-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .cgpa-header .info-label {
+            margin-bottom: 0;
+        }
+
+        .cgpa-value {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a78bfa, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cgpa-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .cgpa-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #7c3aed, #818cf8, #a78bfa);
+            border-radius: 99px;
+            animation: fillBar 1.5s 0.5s ease-out forwards;
+        }
+
+        @keyframes fillBar {
+            to {
+                width: 70.5%;
+            }
+
+            /* 3.30 / 4.00 = 82.5% */
+        }
+
+        .cgpa-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+            font-size: 10px;
+            color: #6b6b88;
+        }
+
+        /* ---- Footer ---- */
+        .footer {
+            margin-top: 28px;
+            font-size: 11px;
+            color: #5a5a78;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 480px) {
+            .card {
+                padding: 36px 24px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <!-- Profile Picture -->
+        <div class="picture-container">
+            <div class="inner">
+                <!-- Replace the emoji below with an <img> tag to add your picture -->
+                <!-- Example: <img src="your-photo.jpg" alt="Ahsan Fayyaz"> -->
+                <img src="My Photo.png" alt="Ahsan Fayyaz">
+            </div>
+        </div>
+        <p class="placeholder-text"></p>
+
+        <!-- Name -->
+        <h1 class="name">Ahsan Fayyaz</h1>
+        <p class="subtitle">BS Computer Science — Fall 2023</p>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <!-- Reg # -->
+            <div class="info-row">
+                <div class="info-icon">🎓</div>
+                <div class="info-content">
+                    <div class="info-label">Registration #</div>
+                    <div class="info-value">5007-FOC/BSCS/F23</div>
+                </div>
+            </div>
+
+            <!-- Name -->
+            <div class="info-row">
+                <div class="info-icon">👤</div>
+                <div class="info-content">
+                    <div class="info-label">Full Name</div>
+                    <div class="info-value">Muhammad Ahsan Fayyaz</div>
+                </div>
+            </div>
+
+            <!-- Mobile -->
+            <div class="info-row">
+                <div class="info-icon">📱</div>
+                <div class="info-content">
+                    <div class="info-label">Mobile #</div>
+                    <div class="info-value">+92 301 9476165</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CGPA Section -->
+        <div class="cgpa-section">
+            <div class="cgpa-header">
+                <div class="info-label">Current CGPA</div>
+                <div class="cgpa-value">2.91 / 4.00</div>
+            </div>
+            <div class="cgpa-bar-bg">
+                <div class="cgpa-bar-fill"></div>
+            </div>
+            <div class="cgpa-scale">
+                <span>0.00</span>
+                <span>1.00</span>
+                <span>2.00</span>
+                <span>3.00</span>
+                <span>4.00</span>
+            </div>
+        </div>
+
+        <p class="footer">Web Engineering — Task 1</p>
+    </div>
+
+</body>
+
+</html>
